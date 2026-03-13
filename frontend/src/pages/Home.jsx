@@ -1,0 +1,230 @@
+import React, { useEffect, useState } from 'react';
+import CategoryCard from '../components/CategoryCard';
+import ProductCard from '../components/ProductCard';
+import LoadingSpinner from '../components/LoadingSpinner';
+import ErrorMessage from '../components/ErrorMessage';
+import { productAPI } from '../utils/api';
+import { useNavigate } from 'react-router-dom';
+
+const Home = () => {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const categories = [
+    {
+      name: 'Bangles',
+      icon: '💍',
+      description: 'Elegant traditional bangles with intricate designs',
+      productCount: 0
+    },
+    {
+      name: 'Chains',
+      icon: '⛓️',
+      description: 'Beautiful gold and silver chains for all occasions',
+      productCount: 0
+    },
+    {
+      name: 'Rings',
+      icon: '💎',
+      description: 'Stunning rings with precious and semi-precious stones',
+      productCount: 0
+    },
+    {
+      name: 'Earrings',
+      icon: '✨',
+      description: 'Exquisite earrings for elegant styling',
+      productCount: 0
+    }
+  ];
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const response = await productAPI.getAllProducts();
+        if (response.success) {
+          // Get featured products (first 6)
+          setFeaturedProducts(response.data.slice(0, 6));
+        }
+      } catch (err) {
+        setError('Failed to load products. Please try again later.');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-ivory">
+      {/* Error Message */}
+      {error && <ErrorMessage message={error} onClose={() => setError(null)} />}
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-maroon to-deepGold text-ivory py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              SriSamskruthi
+            </h1>
+            <p className="text-2xl md:text-3xl text-gold mb-6">
+              Handcrafted Traditional Jewellery
+            </p>
+            <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+              Discover the timeless beauty of authentic Indian jewellery,
+              handcrafted with precision and love. Each piece tells a story of tradition and elegance.
+            </p>
+            <button
+              onClick={() => navigate('/products')}
+              className="bg-gold text-maroon px-8 py-3 rounded-lg font-bold text-lg hover:bg-ivory transition duration-300"
+            >
+              Shop Now
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-maroon text-center mb-12">
+            Our Collections
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.name}
+                category={category.name}
+                icon={category.icon}
+                description={category.description}
+                productCount={category.productCount}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Products Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-maroon text-center mb-12">
+            Featured Products
+          </h2>
+
+          {loading ? (
+            <LoadingSpinner />
+          ) : featuredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredProducts.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  product={product}
+                  onViewDetails={() => navigate(`/product/${product._id}`)}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-600 text-lg">
+              No products available yet. Check back soon!
+            </p>
+          )}
+
+          {featuredProducts.length > 0 && (
+            <div className="text-center mt-12">
+              <button
+                onClick={() => navigate('/products')}
+                className="bg-gold text-maroon px-8 py-3 rounded-lg font-bold text-lg hover:bg-deepGold transition duration-300"
+              >
+                View All Products
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-gradient-to-r from-maroon to-deepGold text-ivory">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-gold mb-6">About SriSamskruthi</h2>
+              <p className="text-lg opacity-90 mb-4">
+                SriSamskruthi is dedicated to preserving and promoting traditional Indian jewellery.
+                Each piece is handcrafted by skilled artisans using authentic techniques passed down through generations.
+              </p>
+              <p className="text-lg opacity-90 mb-4">
+                We believe in quality, authenticity, and sustainability.
+                Our jewellery is not just an accessory; it's a celebration of our rich cultural heritage.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <span className="text-2xl">✓</span>
+                  <span>100% Authentic Handcrafted</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-2xl">✓</span>
+                  <span>Premium Quality Materials</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-2xl">✓</span>
+                  <span>Certified by Artisans</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-2xl">✓</span>
+                  <span>Lifetime Customer Support</span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-gold bg-opacity-20 rounded-lg p-8 flex items-center justify-center h-64">
+              <span className="text-9xl">💎</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 bg-ivory">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-maroon text-center mb-12">
+            Get in Touch
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-5xl mb-4">📍</div>
+              <h3 className="text-xl font-bold text-maroon mb-2">Address</h3>
+              <p className="text-gray-600">
+                SriSamskruthi Store<br />
+                Traditional Jewellery Hub<br />
+                India
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl mb-4">📧</div>
+              <h3 className="text-xl font-bold text-maroon mb-2">Email</h3>
+              <p className="text-gray-600">
+                <a href="mailto:info@srisamskruthi.com" className="hover:text-gold transition duration-300">
+                  info@srisamskruthi.com
+                </a>
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="text-5xl mb-4">📱</div>
+              <h3 className="text-xl font-bold text-maroon mb-2">Phone</h3>
+              <p className="text-gray-600">
+                <a href="tel:+919876543210" className="hover:text-gold transition duration-300">
+                  +91 98765 43210
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
