@@ -12,7 +12,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const categories = [
+  const [categories, setCategories] = useState([
     {
       name: 'Necklace',
       icon: '📿',
@@ -43,7 +43,7 @@ const Home = () => {
       description: 'Delicate earrings with artistic designs',
       productCount: 0
     }
-  ];
+  ]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -51,8 +51,18 @@ const Home = () => {
         setLoading(true);
         const response = await productAPI.getAllProducts();
         if (response.success) {
+          const allProducts = response.data;
+          
           // Get featured products (first 2)
-          setFeaturedProducts(response.data.slice(0, 2));
+          setFeaturedProducts(allProducts.slice(0, 2));
+
+          // Calculate counts for each category
+          setCategories(prevCategories => 
+            prevCategories.map(cat => ({
+              ...cat,
+              productCount: allProducts.filter(p => p.category === cat.name).length
+            }))
+          );
         }
       } catch (err) {
         setError('Failed to load products. Please try again later.');
