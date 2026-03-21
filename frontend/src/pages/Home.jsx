@@ -15,25 +15,25 @@ const Home = () => {
   const categories = [
     {
       name: 'Bangles',
-      icon: '💍',
+      icon: '✨',
       description: 'Elegant traditional bangles with intricate designs',
       productCount: 0
     },
     {
       name: 'Chains',
-      icon: '⛓️',
+      icon: '📿',
       description: 'Beautiful gold and silver chains for all occasions',
       productCount: 0
     },
     {
       name: 'Rings',
-      icon: '💎',
+      icon: '💍',
       description: 'Stunning rings with precious and semi-precious stones',
       productCount: 0
     },
     {
       name: 'Earrings',
-      icon: '✨',
+      icon: '💎',
       description: 'Exquisite earrings for elegant styling',
       productCount: 0
     }
