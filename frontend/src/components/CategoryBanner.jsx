@@ -4,7 +4,7 @@ const CategoryBanner = ({ category }) => {
   const bannerData = {
     Necklace: {
       bgColor: 'from-purple-700 to-purple-900',
-      icon: '💎',
+      icon: '📿',
       description: 'Elegant handmade necklaces for every occasion'
     },
     Bangles: {
@@ -24,7 +24,7 @@ const CategoryBanner = ({ category }) => {
     },
     Earrings: {
       bgColor: 'from-cyan-700 to-blue-900',
-      icon: '👂',
+      icon: '💎',
       description: 'Delicate earrings with artistic designs'
     }
   };

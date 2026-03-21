@@ -14,27 +14,33 @@ const Home = () => {
 
   const categories = [
     {
+      name: 'Necklace',
+      icon: '📿',
+      description: 'Elegant handmade necklaces for every occasion',
+      productCount: 0
+    },
+    {
       name: 'Bangles',
       icon: '✨',
-      description: 'Elegant traditional bangles with intricate designs',
+      description: 'Stunning bangles with traditional craftsmanship',
       productCount: 0
     },
     {
       name: 'Chains',
-      icon: '📿',
-      description: 'Beautiful gold and silver chains for all occasions',
+      icon: '🔗',
+      description: 'Beautiful chains crafted with precision',
       productCount: 0
     },
     {
       name: 'Rings',
       icon: '💍',
-      description: 'Stunning rings with precious and semi-precious stones',
+      description: 'Exquisite rings for special moments',
       productCount: 0
     },
     {
       name: 'Earrings',
       icon: '💎',
-      description: 'Exquisite earrings for elegant styling',
+      description: 'Delicate earrings with artistic designs',
       productCount: 0
     }
   ];
@@ -94,7 +100,7 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-maroon text-center mb-12">
             Our Collections
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {categories.map((category) => (
               <CategoryCard
                 key={category.name}
