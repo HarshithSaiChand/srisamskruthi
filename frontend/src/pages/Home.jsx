@@ -51,8 +51,8 @@ const Home = () => {
         setLoading(true);
         const response = await productAPI.getAllProducts();
         if (response.success) {
-          // Get featured products (first 6)
-          setFeaturedProducts(response.data.slice(0, 6));
+          // Get featured products (first 2)
+          setFeaturedProducts(response.data.slice(0, 2));
         }
       } catch (err) {
         setError('Failed to load products. Please try again later.');
