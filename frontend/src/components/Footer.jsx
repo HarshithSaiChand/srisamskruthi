@@ -81,8 +81,8 @@ const Footer = () => {
               </li>
               <li className="flex gap-2">
                 <span>📧</span>
-                <a href="mailto:info@srisamskruthi.com" className="hover:text-gold transition duration-300">
-                  info@srisamskruthi.com
+                <a href="mailto:Njrapvc@gmail.com" className="hover:text-gold transition duration-300">
+                  Njrapvc@gmail.com
                 </a>
               </li>
               <li className="flex gap-2">

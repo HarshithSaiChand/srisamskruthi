@@ -223,8 +223,8 @@ const Home = () => {
               <div className="text-5xl mb-4">📧</div>
               <h3 className="text-xl font-bold text-maroon mb-2">Email</h3>
               <p className="text-gray-600">
-                <a href="mailto:info@srisamskruthi.com" className="hover:text-gold transition duration-300">
-                  info@srisamskruthi.com
+                <a href="mailto:Njrapvc@gmail.com" className="hover:text-gold transition duration-300">
+                  Njrapvc@gmail.com
                 </a>
               </p>
             </div>
