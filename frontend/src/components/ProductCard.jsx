@@ -63,7 +63,7 @@ const ProductCard = ({ product, onViewDetails }) => {
           <button
             onClick={handleAddToCart}
             disabled={product.stock === 0}
-            className="flex-1 bg-gold text-maroon py-2 rounded-lg font-semibold hover:bg-yellow-500 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="flex-1 bg-gold text-maroon py-2 rounded-lg font-semibold hover:bg-sky-500 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             Add to Cart
           </button>

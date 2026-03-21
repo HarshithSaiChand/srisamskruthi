@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gold: '#D4AF37',
-        maroon: '#6B1D22',
-        ivory: '#FFFFF0',
-        deepGold: '#B8860B',
+        gold: '#38bdf8', // Sky 400
+        maroon: '#0369a1', // Sky 700 / Darker Blue
+        ivory: '#f0f9ff', // Sky 50 / Very Light Blue
+        deepGold: '#075985', // Sky 800 / Deep Blue
       },
       fontFamily: {
         sans: ['Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],

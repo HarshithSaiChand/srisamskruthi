@@ -3,27 +3,27 @@ import React from 'react';
 const CategoryBanner = ({ category }) => {
   const bannerData = {
     Necklace: {
-      bgColor: 'from-purple-700 to-purple-900',
+      bgColor: 'from-sky-700 to-sky-900',
       icon: '📿',
       description: 'Elegant handmade necklaces for every occasion'
     },
     Bangles: {
-      bgColor: 'from-pink-700 to-rose-900',
+      bgColor: 'from-blue-600 to-blue-800',
       icon: '✨',
       description: 'Stunning bangles with traditional craftsmanship'
     },
     Chains: {
-      bgColor: 'from-amber-700 to-yellow-900',
+      bgColor: 'from-cyan-600 to-cyan-800',
       icon: '🔗',
       description: 'Beautiful chains crafted with precision'
     },
     Rings: {
-      bgColor: 'from-red-700 to-red-900',
+      bgColor: 'from-indigo-600 to-indigo-800',
       icon: '💍',
       description: 'Exquisite rings for special moments'
     },
     Earrings: {
-      bgColor: 'from-cyan-700 to-blue-900',
+      bgColor: 'from-teal-600 to-teal-800',
       icon: '💎',
       description: 'Delicate earrings with artistic designs'
     }
