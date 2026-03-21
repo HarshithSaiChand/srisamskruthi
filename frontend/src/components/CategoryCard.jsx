@@ -11,17 +11,17 @@ const CategoryCard = ({ category, icon, description, productCount }) => {
         </div>
 
         {/* Category Name */}
-        <h3 className="text-2xl font-bold text-maroon mb-2">
+        <h3 className="text-2xl font-bold text-white mb-2">
           {category}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-maroon opacity-80 mb-3">
+        <p className="text-sm text-ivory opacity-90 mb-3">
           {description}
         </p>
 
         {/* Product Count */}
-        <p className="text-sm font-semibold text-maroon">
+        <p className="text-sm font-semibold text-white">
           {productCount} {productCount === 1 ? 'Product' : 'Products'}
         </p>
 
