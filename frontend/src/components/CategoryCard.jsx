@@ -22,7 +22,7 @@ const CategoryCard = ({ category, icon, description, productCount }) => {
 
         {/* Product Count */}
         <p className="text-sm font-semibold text-maroon">
-          {productCount} Products
+          {productCount} {productCount === 1 ? 'Product' : 'Products'}
         </p>
 
         {/* Browse Button */}
