@@ -122,15 +122,16 @@ const Home = () => {
           <h2 className="text-4xl font-bold text-maroon text-center mb-12">
             Our Collections
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {categories.map((category) => (
-              <CategoryCard
-                key={category.name}
-                category={category.name}
-                icon={category.icon}
-                description={category.description}
-                productCount={category.productCount}
-              />
+              <div key={category.name} className="w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-1.5rem)] lg:w-[calc(20%-1.5rem)] max-w-[280px]">
+                <CategoryCard
+                  category={category.name}
+                  icon={category.icon}
+                  description={category.description}
+                  productCount={category.productCount}
+                />
+              </div>
             ))}
           </div>
         </div>
