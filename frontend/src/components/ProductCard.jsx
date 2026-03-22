@@ -16,6 +16,7 @@ const ProductCard = ({ product, onViewDetails }) => {
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"
+          loading="lazy"
           onError={(e) => {
             e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
           }}

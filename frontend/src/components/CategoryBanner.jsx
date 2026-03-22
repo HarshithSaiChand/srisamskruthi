@@ -26,6 +26,16 @@ const CategoryBanner = ({ category }) => {
       bgColor: 'from-teal-600 to-teal-800',
       icon: '💎',
       description: 'Delicate earrings with artistic designs'
+    },
+    'Hip Belt': {
+      bgColor: 'from-blue-700 to-indigo-900',
+      icon: '✨',
+      description: 'Elegant hip belts for a traditional look'
+    },
+    'Hair Accessories': {
+      bgColor: 'from-purple-600 to-pink-800',
+      icon: '🌸',
+      description: 'Beautiful hair accessories for every style'
     }
   };
 

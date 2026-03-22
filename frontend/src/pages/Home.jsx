@@ -42,6 +42,18 @@ const Home = () => {
       icon: '💎',
       description: 'Delicate earrings with artistic designs',
       productCount: 0
+    },
+    {
+      name: 'Hip Belt',
+      icon: '✨',
+      description: 'Elegant hip belts for a traditional look',
+      productCount: 0
+    },
+    {
+      name: 'Hair Accessories',
+      icon: '🌸',
+      description: 'Beautiful hair accessories for every style',
+      productCount: 0
     }
   ]);
 
