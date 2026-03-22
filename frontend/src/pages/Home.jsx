@@ -6,6 +6,16 @@ import ErrorMessage from '../components/ErrorMessage';
 import { productAPI } from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 
+import { 
+  NecklaceIcon, 
+  BanglesIcon, 
+  ChainsIcon, 
+  RingsIcon, 
+  EarringsIcon, 
+  HipBeltIcon, 
+  HairAccessoriesIcon 
+} from '../components/JewelleryIcons';
+
 const Home = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,43 +25,43 @@ const Home = () => {
   const [categories, setCategories] = useState([
     {
       name: 'Necklace',
-      icon: '📿',
+      icon: <NecklaceIcon />,
       description: 'Elegant handmade necklaces for every occasion',
       productCount: 0
     },
     {
       name: 'Bangles',
-      icon: '✨',
+      icon: <BanglesIcon />,
       description: 'Stunning bangles with traditional craftsmanship',
       productCount: 0
     },
     {
       name: 'Chains',
-      icon: '🔗',
+      icon: <ChainsIcon />,
       description: 'Beautiful chains crafted with precision',
       productCount: 0
     },
     {
       name: 'Rings',
-      icon: '💍',
+      icon: <RingsIcon />,
       description: 'Exquisite rings for special moments',
       productCount: 0
     },
     {
       name: 'Earrings',
-      icon: '💎',
+      icon: <EarringsIcon />,
       description: 'Delicate earrings with artistic designs',
       productCount: 0
     },
     {
       name: 'Hip Belt',
-      icon: '✨',
+      icon: <HipBeltIcon />,
       description: 'Elegant hip belts for a traditional look',
       productCount: 0
     },
     {
       name: 'Hair Accessories',
-      icon: '🌸',
+      icon: <HairAccessoriesIcon />,
       description: 'Beautiful hair accessories for every style',
       productCount: 0
     }
