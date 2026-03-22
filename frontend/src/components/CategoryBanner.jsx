@@ -2,7 +2,7 @@ const CategoryBanner = ({ category }) => {
   const bannerData = {
     Necklace: {
       bgColor: 'from-sky-700 to-sky-900',
-      icon: '📿',
+      icon: <img src="https://cdn-icons-png.flaticon.com/128/7466/7466570.png" alt="Necklace" className="w-14 h-14" />,
       description: 'Elegant handmade necklaces for every occasion'
     },
     Bangles: {
