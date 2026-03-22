@@ -6,7 +6,7 @@ const CategoryCard = ({ category, icon, description, productCount }) => {
     <Link to={`/products?category=${category}`}>
       <div className="bg-gradient-to-br from-gold to-deepGold rounded-lg shadow-lg p-6 text-center cursor-pointer hover:shadow-2xl transition duration-300 transform hover:scale-105 h-full">
         {/* Icon */}
-        <div className="w-16 h-16 mx-auto mb-4 text-white p-3 bg-white/10 rounded-full backdrop-blur-sm shadow-inner">
+        <div className="text-5xl mb-3">
           {icon}
         </div>
 
