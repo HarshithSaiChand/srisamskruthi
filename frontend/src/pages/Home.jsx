@@ -45,7 +45,7 @@ const Home = () => {
     },
     {
       name: 'Hip Belt',
-      icon: '✨',
+      icon: <img src="/hipbelt-icon.png" alt="Hip Belt" className="w-12 h-12 mx-auto" />,
       description: 'Elegant hip belts for a traditional look',
       productCount: 0
     },

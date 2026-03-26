@@ -27,7 +27,7 @@ const CategoryBanner = ({ category }) => {
     },
     'Hip Belt': {
       bgColor: 'from-blue-700 to-indigo-900',
-      icon: '✨',
+      icon: <img src="/hipbelt-icon.png" alt="Hip Belt" className="w-14 h-14 inline-block" />,
       description: 'Elegant hip belts for a traditional look'
     },
     'Hair Accessories': {
