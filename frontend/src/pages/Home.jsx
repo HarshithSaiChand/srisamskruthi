@@ -15,7 +15,7 @@ const Home = () => {
   const [categories, setCategories] = useState([
     {
       name: 'Necklace',
-      icon: <img src="https://cdn-icons-png.flaticon.com/128/7466/7466570.png" alt="Necklace" className="w-12 h-12 mx-auto" />,
+      icon: <img src="/necklace-icon.png" alt="Necklace" className="w-12 h-12 mx-auto" />,
       description: 'Elegant handmade necklaces for every occasion',
       productCount: 0
     },
@@ -27,7 +27,7 @@ const Home = () => {
     },
     {
       name: 'Chains',
-      icon: <img src="https://cdn-icons-png.flaticon.com/128/7466/7466570.png" alt="Chains" className="w-12 h-12 mx-auto" />,
+      icon: <img src="/necklace-icon.png" alt="Chains" className="w-12 h-12 mx-auto" />,
       description: 'Beautiful chains crafted with precision',
       productCount: 0
     },
