@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../components/ErrorMessage';
 import { orderAPI } from '../utils/api';
+import PaymentGateway from '../components/PaymentGateway';
 
 const indianStates = [
   "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", 
@@ -21,6 +22,7 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [showPaymentGateway, setShowPaymentGateway] = useState(false);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -113,15 +115,17 @@ const Checkout = () => {
     return true;
   };
 
-  const handlePlaceOrder = async (e) => {
+  const handlePlaceOrderClick = (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
+    if (validateForm()) {
+      setShowPaymentGateway(true);
     }
+  };
 
+  const handlePlaceOrder = async (method) => {
     try {
       setLoading(true);
+      setShowPaymentGateway(false); // Hide modal while processing
 
       // Prepare order data
       const orderData = {
@@ -133,7 +137,7 @@ const Checkout = () => {
         })),
         totalAmount: finalTotal,
         customer: formData,
-        paymentMethod: 'razorpay'
+        paymentMethod: method || 'bank_transfer'
       };
 
       // Create order
@@ -214,8 +218,16 @@ I have transferred the amount to the bank account. Please verify my payment and 
   }
 
   return (
-    <div className="min-h-screen bg-ivory py-8">
+    <div className="min-h-screen bg-ivory py-8 relative">
       {error && <ErrorMessage message={error} onClose={() => setError(null)} />}
+
+      {showPaymentGateway && (
+        <PaymentGateway 
+          total={finalTotal} 
+          onClose={() => setShowPaymentGateway(false)} 
+          onPaymentSuccess={handlePlaceOrder} 
+        />
+      )}
 
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-maroon mb-8">Checkout</h1>
@@ -223,7 +235,7 @@ I have transferred the amount to the bank account. Please verify my payment and 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Checkout Form */}
           <div className="lg:col-span-2">
-            <form onSubmit={handlePlaceOrder} className="bg-white rounded-lg shadow-lg p-8">
+            <form onSubmit={handlePlaceOrderClick} className="bg-white rounded-lg shadow-lg p-8">
               {/* Customer Information */}
               <div className="mb-8">
                 <h2 className="text-2xl font-bold text-maroon mb-6">Customer Information</h2>
