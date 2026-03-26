@@ -21,7 +21,7 @@ const Home = () => {
     },
     {
       name: 'Bangles',
-      icon: '✨',
+      icon: <img src="/bangles-icon.png" alt="Bangles" className="w-12 h-12 mx-auto" />,
       description: 'Stunning bangles with traditional craftsmanship',
       productCount: 0
     },

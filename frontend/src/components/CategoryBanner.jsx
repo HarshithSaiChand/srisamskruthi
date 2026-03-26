@@ -7,7 +7,7 @@ const CategoryBanner = ({ category }) => {
     },
     Bangles: {
       bgColor: 'from-blue-600 to-blue-800',
-      icon: '✨',
+      icon: <img src="/bangles-icon.png" alt="Bangles" className="w-14 h-14 inline-block" />,
       description: 'Stunning bangles with traditional craftsmanship'
     },
     Chains: {
