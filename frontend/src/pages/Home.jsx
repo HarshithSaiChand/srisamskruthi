@@ -39,7 +39,7 @@ const Home = () => {
     },
     {
       name: 'Earrings',
-      icon: '💎',
+      icon: <img src="/earrings-icon.png" alt="Earrings" className="w-12 h-12 mx-auto" />,
       description: 'Delicate earrings with artistic designs',
       productCount: 0
     },

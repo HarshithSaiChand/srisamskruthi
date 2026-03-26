@@ -22,7 +22,7 @@ const CategoryBanner = ({ category }) => {
     },
     Earrings: {
       bgColor: 'from-teal-600 to-teal-800',
-      icon: '💎',
+      icon: <img src="/earrings-icon.png" alt="Earrings" className="w-14 h-14 inline-block" />,
       description: 'Delicate earrings with artistic designs'
     },
     'Hip Belt': {
