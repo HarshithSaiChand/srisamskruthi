@@ -141,7 +141,7 @@ const ProductDetails = () => {
             <div className="mb-6">
               <p className={`text-lg font-semibold ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {product.stock > 0
-                  ? `✓ ${product.stock} in stock`
+                  ? '✓ In stock'
                   : '✗ Out of stock'}
               </p>
             </div>

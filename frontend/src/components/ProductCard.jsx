@@ -49,7 +49,7 @@ const ProductCard = ({ product, onViewDetails }) => {
             ₹{product.price.toLocaleString('en-IN')}
           </span>
           <span className={`text-xs font-semibold ${product.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
-            {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+            {product.stock > 0 ? 'In stock' : 'Out of stock'}
           </span>
         </div>
 
