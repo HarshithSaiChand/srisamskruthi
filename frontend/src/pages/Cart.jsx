@@ -7,8 +7,8 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const cartTotal = getCartTotal();
-  const estimatedShipping = cartTotal > 5000 ? 0 : 150;
-  const finalTotal = cartTotal + estimatedShipping;
+  const estimatedShipping = cartTotal > 5000 ? 0 : null;
+  const finalTotal = cartTotal + (estimatedShipping || 0);
 
   return (
     <div className="min-h-screen bg-ivory py-8">
@@ -148,7 +148,7 @@ const Cart = () => {
                       {estimatedShipping === 0 ? (
                         <span className="text-green-600">FREE</span>
                       ) : (
-                        `₹${estimatedShipping.toLocaleString('en-IN')}`
+                        <span className="text-gray-500 text-sm italic">Calculated at checkout</span>
                       )}
                     </span>
                   </div>

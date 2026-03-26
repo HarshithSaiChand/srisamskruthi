@@ -26,7 +26,44 @@ const Checkout = () => {
   });
 
   const cartTotal = getCartTotal();
-  const estimatedShipping = cartTotal > 5000 ? 0 : 150;
+  
+  const getShippingCost = (stateStr, total) => {
+    if (total > 5000) return 0; // Keeping free shipping for large orders
+    if (!stateStr) return 80; // Default base rate before state is entered
+
+    const state = stateStr.trim().toLowerCase();
+
+    // Nearby (Andhra / Telangana)
+    if (
+      state.includes('andhra') || 
+      state.includes('telangana') || 
+      state === 'ap' || 
+      state === 'ts' || 
+      state === 'tg'
+    ) {
+      return 80; 
+    }
+
+    // Other States (Tamil Nadu, Karnataka, Maharashtra, etc.)
+    if (
+      state.includes('tamil') || 
+      state.includes('karnataka') || 
+      state.includes('maharashtra') || 
+      state.includes('kerala') || 
+      state.includes('goa') || 
+      state === 'tn' || 
+      state === 'ka' || 
+      state === 'mh' || 
+      state === 'kl'
+    ) {
+      return 120; 
+    }
+
+    // Far States (Delhi / North India / Default)
+    return 150; 
+  };
+
+  const estimatedShipping = getShippingCost(formData.address.state, cartTotal);
   const finalTotal = cartTotal + estimatedShipping;
 
   const handleInputChange = (e) => {
