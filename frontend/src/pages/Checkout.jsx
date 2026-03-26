@@ -10,7 +10,7 @@ const Checkout = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(null);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -28,7 +28,6 @@ const Checkout = () => {
   const cartTotal = getCartTotal();
   
   const getShippingCost = (stateStr, total) => {
-    if (total > 5000) return 0; // Keeping free shipping for large orders
     if (!stateStr) return 80; // Default base rate before state is entered
 
     const state = stateStr.trim().toLowerCase();
@@ -131,16 +130,20 @@ const Checkout = () => {
       const response = await orderAPI.createOrder(orderData);
 
       if (response.success) {
-        setSuccess(true);
-        
-        // Simulate Razorpay payment (placeholder)
-        // In production, integrate actual Razorpay SDK here
-        
-        // Clear cart and redirect after success
-        setTimeout(() => {
-          clearCart();
-          navigate('/');
-        }, 3000);
+        const orderSummaryTxt = cartItems.map(item => `${item.quantity}x ${item.name}`).join(', ');
+        const waText = `Hello SriSamskruthi! I just placed an order on the website.
+
+*Name*: ${formData.name}
+*Phone*: ${formData.phone}
+*Order Total*: ₹${finalTotal.toLocaleString('en-IN')}
+*Items*: ${orderSummaryTxt}
+
+I have transferred the amount to the bank account. Please verify my payment and confirm the order!`;
+
+        setSuccess({
+          encodedMsg: encodeURIComponent(waText)
+        });
+        clearCart();
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to place order. Please try again.');
@@ -176,19 +179,24 @@ const Checkout = () => {
     return (
       <div className="min-h-screen bg-ivory flex items-center justify-center py-8">
         <div className="bg-white rounded-lg shadow-lg p-12 text-center max-w-md">
-          <div className="text-6xl mb-4">✓</div>
+          <div className="text-6xl mb-4 text-green-500">✓</div>
           <h2 className="text-3xl font-bold text-green-600 mb-4">Order Placed Successfully!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for your order. We'll send you a confirmation email shortly with order details and tracking information.
+            Thank you for your order! To finalize your purchase and help us verify your bank transfer, please send us your order details securely via WhatsApp.
           </p>
-          <p className="text-sm text-gray-500 mb-8">
-            Redirecting to home page in a moment...
-          </p>
+          <a
+            href={`https://wa.me/919876543210?text=${success.encodedMsg}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition duration-300 mb-4 flex items-center justify-center gap-2"
+          >
+            <span className="text-2xl">💬</span> Confirm on WhatsApp
+          </a>
           <button
             onClick={() => navigate('/')}
-            className="bg-gold text-maroon px-8 py-3 rounded-lg font-bold text-lg hover:bg-deepGold transition duration-300"
+            className="w-full bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-bold hover:bg-gray-300 transition duration-300"
           >
-            Return to Home
+            Back to Home
           </button>
         </div>
       </div>
