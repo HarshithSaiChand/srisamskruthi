@@ -245,8 +245,8 @@ const Home = () => {
               <div className="text-5xl mb-4">📱</div>
               <h3 className="text-xl font-bold text-maroon mb-2">Phone</h3>
               <p className="text-gray-600">
-                <a href="tel:+919876543210" className="hover:text-gold transition duration-300">
-                  +91 98765 43210
+                <a href="tel:+916304064393" className="hover:text-gold transition duration-300">
+                  +91 63040 64393
                 </a>
               </p>
             </div>

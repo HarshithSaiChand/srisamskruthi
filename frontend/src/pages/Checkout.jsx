@@ -199,7 +199,7 @@ I have transferred the amount to the bank account. Please verify my payment and 
             Thank you for your order! To finalize your purchase and help us verify your bank transfer, please send us your order details securely via WhatsApp.
           </p>
           <a
-            href={`https://wa.me/919876543210?text=${success.encodedMsg}`}
+            href={`https://wa.me/916304064393?text=${success.encodedMsg}`}
             target="_blank"
             rel="noopener noreferrer"
             className="block w-full bg-green-500 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-green-600 transition duration-300 mb-4 flex items-center justify-center gap-2"
