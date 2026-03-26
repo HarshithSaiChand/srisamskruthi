@@ -17,7 +17,7 @@ const CategoryBanner = ({ category }) => {
     },
     Rings: {
       bgColor: 'from-indigo-600 to-indigo-800',
-      icon: '💍',
+      icon: <img src="/ring-icon.png" alt="Rings" className="w-14 h-14 inline-block" />,
       description: 'Exquisite rings for special moments'
     },
     Earrings: {

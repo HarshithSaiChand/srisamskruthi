@@ -33,7 +33,7 @@ const Home = () => {
     },
     {
       name: 'Rings',
-      icon: '💍',
+      icon: <img src="/ring-icon.png" alt="Rings" className="w-12 h-12 mx-auto" />,
       description: 'Exquisite rings for special moments',
       productCount: 0
     },
