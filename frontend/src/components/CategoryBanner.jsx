@@ -12,7 +12,7 @@ const CategoryBanner = ({ category }) => {
     },
     Chains: {
       bgColor: 'from-cyan-600 to-cyan-800',
-      icon: '🔗',
+      icon: <img src="https://cdn-icons-png.flaticon.com/128/7466/7466570.png" alt="Chains" className="w-14 h-14 inline-block" />,
       description: 'Beautiful chains crafted with precision'
     },
     Rings: {
