@@ -51,7 +51,7 @@ const Home = () => {
     },
     {
       name: 'Hair Accessories',
-      icon: '🌸',
+      icon: <img src="/hair-icon.png" alt="Hair Accessories" className="w-12 h-12 mx-auto" />,
       description: 'Beautiful hair accessories for every style',
       productCount: 0
     }

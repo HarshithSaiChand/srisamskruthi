@@ -32,7 +32,7 @@ const CategoryBanner = ({ category }) => {
     },
     'Hair Accessories': {
       bgColor: 'from-purple-600 to-pink-800',
-      icon: '🌸',
+      icon: <img src="/hair-icon.png" alt="Hair Accessories" className="w-14 h-14 inline-block" />,
       description: 'Beautiful hair accessories for every style'
     }
   };
