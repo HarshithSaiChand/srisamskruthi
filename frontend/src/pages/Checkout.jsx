@@ -4,6 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../components/ErrorMessage';
 import { orderAPI } from '../utils/api';
 
+const indianStates = [
+  "Andaman and Nicobar Islands", "Andhra Pradesh", "Arunachal Pradesh", "Assam", 
+  "Bihar", "Chandigarh", "Chhattisgarh", "Dadra and Nagar Haveli", "Daman and Diu", 
+  "Delhi", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", 
+  "Jharkhand", "Karnataka", "Kerala", "Ladakh", "Lakshadweep", "Madhya Pradesh", 
+  "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", 
+  "Puducherry", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", 
+  "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal"
+];
+
 const Checkout = () => {
   const { cartItems, getCartTotal, clearCart } = useCart();
   const navigate = useNavigate();
@@ -293,15 +303,18 @@ I have transferred the amount to the bank account. Please verify my payment and 
 
                   <div>
                     <label className="block text-maroon font-semibold mb-2">State *</label>
-                    <input
-                      type="text"
+                    <select
                       name="address.state"
                       value={formData.address.state}
                       onChange={handleInputChange}
-                      placeholder="Enter state"
-                      className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-gold"
+                      className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-gold bg-white"
                       required
-                    />
+                    >
+                      <option value="" disabled>Select state</option>
+                      {indianStates.map(state => (
+                        <option key={state} value={state}>{state}</option>
+                      ))}
+                    </select>
                   </div>
 
                   <div>
