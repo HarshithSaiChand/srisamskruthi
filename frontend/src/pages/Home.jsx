@@ -209,8 +209,8 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-gold bg-opacity-20 rounded-lg p-8 flex items-center justify-center h-64">
-              <span className="text-9xl">💎</span>
+            <div className="bg-gold bg-opacity-20 rounded-lg flex items-center justify-center h-64 overflow-hidden shadow-inner">
+              <img src="/samskruthi-logo.jpg" alt="SriSamskruthi" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
