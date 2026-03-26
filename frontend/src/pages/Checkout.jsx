@@ -27,8 +27,7 @@ const Checkout = () => {
 
   const cartTotal = getCartTotal();
   const estimatedShipping = cartTotal > 5000 ? 0 : 150;
-  const tax = Math.round(cartTotal * 0.18);
-  const finalTotal = cartTotal + estimatedShipping + tax;
+  const finalTotal = cartTotal + estimatedShipping;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -323,10 +322,6 @@ const Checkout = () => {
                       `₹${estimatedShipping.toLocaleString('en-IN')}`
                     )}
                   </span>
-                </div>
-                <div className="flex justify-between text-gray-700">
-                  <span>Tax (18%)</span>
-                  <span className="font-semibold">₹{tax.toLocaleString('en-IN')}</span>
                 </div>
               </div>
 

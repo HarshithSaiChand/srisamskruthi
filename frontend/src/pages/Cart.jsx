@@ -8,8 +8,7 @@ const Cart = () => {
 
   const cartTotal = getCartTotal();
   const estimatedShipping = cartTotal > 5000 ? 0 : 150;
-  const tax = Math.round(cartTotal * 0.18);
-  const finalTotal = cartTotal + estimatedShipping + tax;
+  const finalTotal = cartTotal + estimatedShipping;
 
   return (
     <div className="min-h-screen bg-ivory py-8">
@@ -152,10 +151,6 @@ const Cart = () => {
                         `₹${estimatedShipping.toLocaleString('en-IN')}`
                       )}
                     </span>
-                  </div>
-                  <div className="flex justify-between text-gray-700">
-                    <span>Tax (18%)</span>
-                    <span className="font-semibold">₹{tax.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
 
