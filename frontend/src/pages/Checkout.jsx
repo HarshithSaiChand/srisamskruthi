@@ -146,13 +146,13 @@ const Checkout = () => {
       if (response.success) {
         const orderSummaryTxt = cartItems.map(item => `${item.quantity}x ${item.name}`).join(', ');
         const waText = `Hello SriSamskruthi! I just placed an order on the website.
-
-*Name*: ${formData.name}
-*Phone*: ${formData.phone}
-*Order Total*: ₹${finalTotal.toLocaleString('en-IN')}
-*Items*: ${orderSummaryTxt}
-
-I have transferred the amount to the bank account. Please verify my payment and confirm the order!`;
+ 
+ *Name*: ${formData.name}
+ *Phone*: ${formData.phone}
+ *Order Total*: ₹${finalTotal.toLocaleString('en-IN')}
+ *Items*: ${orderSummaryTxt}
+ 
+ Please verify my order and confirm the shipment!`;
 
         setSuccess({
           encodedMsg: encodeURIComponent(waText)
@@ -196,7 +196,7 @@ I have transferred the amount to the bank account. Please verify my payment and 
           <div className="text-6xl mb-4 text-green-500">✓</div>
           <h2 className="text-3xl font-bold text-green-600 mb-4">Order Placed Successfully!</h2>
           <p className="text-gray-600 mb-6">
-            Thank you for your order! To finalize your purchase and help us verify your bank transfer, please send us your order details securely via WhatsApp.
+            Thank you for your order! To finalize your purchase and help us verify your request, please send us your order details securely via WhatsApp.
           </p>
           <a
             href={`https://wa.me/916304064393?text=${success.encodedMsg}`}
@@ -402,19 +402,7 @@ I have transferred the amount to the bank account. Please verify my payment and 
                 </span>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-blue-900 leading-relaxed">
-                <p className="font-semibold mb-3 flex items-center gap-2 text-blue-800">
-                  <span className="text-lg">🏦</span> Bank Transfer Details
-                </p>
-                <p className="mb-2 text-blue-700">Please transfer the total amount to the following bank account to complete your order:</p>
-                <div className="bg-white p-3 rounded border border-blue-100 font-mono text-xs shadow-sm space-y-1">
-                  <p><span className="font-bold text-gray-600 font-sans">Account Holder:</span> PINGALI TIRUMALADATTA SAI PARASURAM</p>
-                  <p><span className="font-bold text-gray-600 font-sans">Account Number:</span> 50100745507828</p>
-                  <p><span className="font-bold text-gray-600 font-sans">IFSC Code:</span> HDFC0001996</p>
-                  <p><span className="font-bold text-gray-600 font-sans">Branch:</span> HYDERGUDA</p>
-                </div>
-                <p className="mt-3 text-xs text-blue-600 italic">* Your order will be processed once we verify your payment.</p>
-              </div>
+
 
               <div className="mt-6 space-y-2 text-sm text-gray-600">
                 <p className="flex items-center gap-2">
