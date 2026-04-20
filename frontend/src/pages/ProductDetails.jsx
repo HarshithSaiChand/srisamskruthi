@@ -251,11 +251,28 @@ const ProductDetails = () => {
       {/* Image Zoom Modal */}
       {isZoomed && (
         <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
           onClick={() => setIsZoomed(false)}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+              e.stopPropagation();
+              if (product?.images?.length) {
+                const currentIndex = product.images.indexOf(mainImage || product.image);
+                if (e.key === 'ArrowRight') {
+                  const nextIndex = (currentIndex + 1) % product.images.length;
+                  setMainImage(product.images[nextIndex]);
+                } else if (e.key === 'ArrowLeft') {
+                  const prevIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+                  setMainImage(product.images[prevIndex]);
+                }
+              }
+            }
+          }}
+          tabIndex="0"
+          ref={(el) => el && el.focus()}
         >
           <button 
-            className="absolute top-6 right-6 text-white text-4xl hover:text-gold transition font-bold"
+            className="absolute top-6 right-6 text-white text-4xl hover:text-gold transition font-bold z-50"
             onClick={(e) => {
               e.stopPropagation();
               setIsZoomed(false);
@@ -263,12 +280,45 @@ const ProductDetails = () => {
           >
             ×
           </button>
-          <img
-            src={mainImage || product.image}
-            alt={product.name}
-            className="max-w-full max-h-[90vh] object-contain rounded shadow-2xl scale-100 transform transition-transform duration-300"
-            onClick={(e) => e.stopPropagation()} /* prevents closing when clicking the image itself, though clicking wrapper closes it */
-          />
+
+          {/* Left Arrow */}
+          {product?.images?.length > 1 && (
+            <button
+              className="absolute left-4 md:left-12 text-white/50 hover:text-white text-5xl md:text-7xl transition-colors select-none z-50 p-4"
+              onClick={(e) => {
+                e.stopPropagation();
+                const currentIndex = product.images.indexOf(mainImage || product.image);
+                const prevIndex = (currentIndex - 1 + product.images.length) % product.images.length;
+                setMainImage(product.images[prevIndex]);
+              }}
+            >
+              ‹
+            </button>
+          )}
+
+          <div className="relative max-w-full max-h-[90vh] flex items-center justify-center">
+            <img
+              src={mainImage || product.image}
+              alt={product.name}
+              className="max-w-full max-h-[90vh] object-contain rounded shadow-2xl transition-all duration-300"
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+
+          {/* Right Arrow */}
+          {product?.images?.length > 1 && (
+            <button
+              className="absolute right-4 md:right-12 text-white/50 hover:text-white text-5xl md:text-7xl transition-colors select-none z-50 p-4"
+              onClick={(e) => {
+                e.stopPropagation();
+                const currentIndex = product.images.indexOf(mainImage || product.image);
+                const nextIndex = (currentIndex + 1) % product.images.length;
+                setMainImage(product.images[nextIndex]);
+              }}
+            >
+              ›
+            </button>
+          )}
         </div>
       )}
     </div>
