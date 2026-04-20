@@ -54,6 +54,16 @@ const sampleProducts = [
     stock: 18,
     rating: 4.9,
     reviews: 28
+  },
+  {
+    name: "Matti gajulu",
+    category: "Bangles",
+    price: 299,
+    description: "Beautiful traditional Matti gajulu with stunning ruby-like stones. Perfect for adding a touch of elegance to any traditional outfit.",
+    image: "/images/products/matti-gajulu-1.jpg",
+    stock: 50,
+    rating: 5.0,
+    reviews: 12
   }
 ];
 
