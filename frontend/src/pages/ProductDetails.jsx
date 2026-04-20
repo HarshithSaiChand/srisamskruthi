@@ -11,6 +11,7 @@ const ProductDetails = () => {
   const { addToCart } = useCart();
 
   const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -23,6 +24,7 @@ const ProductDetails = () => {
         const response = await productAPI.getById(id);
         if (response.success) {
           setProduct(response.data);
+          setMainImage(response.data.image);
         }
       } catch (err) {
         setError('Failed to load product details. Please try again later.');
@@ -89,15 +91,32 @@ const ProductDetails = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Image */}
-          <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-auto max-h-96 object-cover rounded-lg"
-              onError={(e) => {
-                e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
-              }}
-            />
+          <div className="flex flex-col gap-4">
+            <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center">
+              <img
+                src={mainImage || product.image}
+                alt={product.name}
+                className="w-full h-auto max-h-96 object-contain rounded-lg transition-all duration-300"
+                onError={(e) => {
+                  e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
+                }}
+              />
+            </div>
+            
+            {/* Thumbnails Gallery */}
+            {product.images && product.images.length > 0 && (
+              <div className="flex gap-3 p-3 overflow-x-auto bg-white rounded-lg shadow-md snap-x">
+                {product.images.map((img, idx) => (
+                  <button 
+                    key={idx} 
+                    onClick={() => setMainImage(img)}
+                    className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 focus:outline-none ${mainImage === img ? 'border-maroon shadow-md' : 'border-transparent opacity-70 hover:opacity-100 snap-center'}`}
+                  >
+                    <img src={img} alt={`thumbnail ${idx+1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Product Details */}

@@ -113,7 +113,7 @@ router.post('/products', async (req, res) => {
 // Update product (Admin)
 router.put('/product/:id', async (req, res) => {
   try {
-    const { name, category, price, description, image, stock } = req.body;
+    const { name, category, price, description, image, images, stock } = req.body;
 
     const product = await Product.findById(req.params.id);
     
@@ -130,6 +130,7 @@ router.put('/product/:id', async (req, res) => {
     if (price) product.price = price;
     if (description) product.description = description;
     if (image) product.image = image;
+    if (images) product.images = images;
     if (stock !== undefined) product.stock = stock;
 
     const updatedProduct = await product.save();

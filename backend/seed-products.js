@@ -61,6 +61,12 @@ const sampleProducts = [
     price: 299,
     description: "Beautiful traditional Matti gajulu with stunning ruby-like stones. Perfect for adding a touch of elegance to any traditional outfit.",
     image: "/images/products/matti-gajulu-1.jpg",
+    images: [
+      "/images/products/matti-gajulu-1.jpg",
+      "/images/products/matti-gajulu-2.jpg",
+      "/images/products/matti-gajulu-3.jpg",
+      "/images/products/matti-gajulu-4.jpg"
+    ],
     stock: 50,
     rating: 5.0,
     reviews: 12

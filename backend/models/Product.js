@@ -29,6 +29,10 @@ const productSchema = new mongoose.Schema(
       required: [true, 'Please provide an image URL'],
       default: 'https://via.placeholder.com/400x400?text=SriSamskruthi'
     },
+    images: {
+      type: [String],
+      default: []
+    },
     stock: {
       type: Number,
       required: [true, 'Please provide stock quantity'],
