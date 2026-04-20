@@ -16,6 +16,7 @@ const ProductDetails = () => {
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -92,7 +93,13 @@ const ProductDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Image */}
           <div className="flex flex-col gap-4">
-            <div className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center">
+            <div 
+              className="bg-white rounded-lg shadow-lg p-8 flex items-center justify-center cursor-pointer hover:shadow-xl transition duration-300 relative group"
+              onClick={() => setIsZoomed(true)}
+            >
+              <div className="absolute top-4 right-4 bg-white/80 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                🔍
+              </div>
               <img
                 src={mainImage || product.image}
                 alt={product.name}
@@ -240,6 +247,30 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Image Zoom Modal */}
+      {isZoomed && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm"
+          onClick={() => setIsZoomed(false)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white text-4xl hover:text-gold transition font-bold"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsZoomed(false);
+            }}
+          >
+            ×
+          </button>
+          <img
+            src={mainImage || product.image}
+            alt={product.name}
+            className="max-w-full max-h-[90vh] object-contain rounded shadow-2xl scale-100 transform transition-transform duration-300"
+            onClick={(e) => e.stopPropagation()} /* prevents closing when clicking the image itself, though clicking wrapper closes it */
+          />
+        </div>
+      )}
     </div>
   );
 };
