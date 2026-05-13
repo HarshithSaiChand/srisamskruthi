@@ -16,7 +16,7 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'All');
   const [priceRange, setPriceRange] = useState([0, 100000]);
 
-  const categories = ['All', 'Necklace', 'Bangles', 'Chains', 'Rings', 'Earrings'];
+  const categories = ['All', 'Necklace', 'Bangles', 'Chains', 'Rings', 'Earrings', 'Makeup'];
 
   useEffect(() => {
     const fetchProducts = async () => {
