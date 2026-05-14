@@ -16,7 +16,19 @@ export const productAPI = {
   // Get all products
   getAllProducts: async () => {
     try {
+      // Check cache first to prevent redundant network requests and provide instant loading
+      const cached = sessionStorage.getItem('srisamskruthi_products');
+      if (cached) {
+        return JSON.parse(cached);
+      }
+
       const response = await apiClient.get('/products');
+      
+      // Save successful response to cache
+      if (response.data && response.data.success) {
+        sessionStorage.setItem('srisamskruthi_products', JSON.stringify(response.data));
+      }
+      
       return response.data;
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -38,7 +50,30 @@ export const productAPI = {
   // Get single product
   getById: async (id) => {
     try {
+      // First, try to find the product in the full products list cache to avoid any network request
+      const cachedList = sessionStorage.getItem('srisamskruthi_products');
+      if (cachedList) {
+        const parsedList = JSON.parse(cachedList);
+        if (parsedList.data && Array.isArray(parsedList.data)) {
+          const product = parsedList.data.find(p => p._id === id);
+          if (product) {
+            return { success: true, data: product };
+          }
+        }
+      }
+
+      // Second, try individual product cache
+      const cachedItem = sessionStorage.getItem(`srisamskruthi_product_${id}`);
+      if (cachedItem) {
+        return JSON.parse(cachedItem);
+      }
+
       const response = await apiClient.get(`/product/${id}`);
+      
+      if (response.data && response.data.success) {
+        sessionStorage.setItem(`srisamskruthi_product_${id}`, JSON.stringify(response.data));
+      }
+      
       return response.data;
     } catch (error) {
       console.error('Error fetching product:', error);

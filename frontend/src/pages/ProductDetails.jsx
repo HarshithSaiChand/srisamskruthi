@@ -104,6 +104,7 @@ const ProductDetails = () => {
                 src={mainImage || product.image}
                 alt={product.name}
                 className="w-full h-auto max-h-96 object-contain rounded-lg transition-all duration-300"
+                decoding="async"
                 onError={(e) => {
                   e.target.src = 'https://via.placeholder.com/400x400?text=No+Image';
                 }}
@@ -119,7 +120,7 @@ const ProductDetails = () => {
                     onClick={() => setMainImage(img)}
                     className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 focus:outline-none ${mainImage === img ? 'border-maroon shadow-md' : 'border-transparent opacity-70 hover:opacity-100 snap-center'}`}
                   >
-                    <img src={img} alt={`thumbnail ${idx+1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`thumbnail ${idx+1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </button>
                 ))}
               </div>
@@ -301,6 +302,7 @@ const ProductDetails = () => {
               src={mainImage || product.image}
               alt={product.name}
               className="max-w-full max-h-[90vh] object-contain rounded shadow-2xl transition-all duration-300"
+              decoding="async"
               onClick={(e) => e.stopPropagation()} 
             />
           </div>
